@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "PoolTransactions" ALTER COLUMN "etfType" SET DATA TYPE TEXT,
+ALTER COLUMN "Symbol" SET DATA TYPE TEXT;

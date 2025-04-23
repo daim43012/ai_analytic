@@ -1,0 +1,23 @@
+-- AlterTable
+ALTER TABLE "UserWallets" ADD COLUMN     "userStatus" TEXT NOT NULL DEFAULT '';
+
+-- CreateTable
+CREATE TABLE "TransactionsForSale" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL DEFAULT 'test@gmail.com',
+    "ClaimedIncomingAmount" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "ClaimedPublicRate" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "investDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "typeOfETF" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "amountETF" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "buyPrice" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "totalProfit" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "pieAmountIncludeAmount" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "commission" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "commissionValue" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "amountTokens" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "saleTimes" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "address" TEXT NOT NULL DEFAULT '',
+
+    CONSTRAINT "TransactionsForSale_pkey" PRIMARY KEY ("id")
+);

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VirtualWalletDeposit" ADD COLUMN     "amountUSDF" DOUBLE PRECISION NOT NULL DEFAULT 0;

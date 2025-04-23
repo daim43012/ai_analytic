@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VirtualWallet" ADD COLUMN     "finalValue" DOUBLE PRECISION NOT NULL DEFAULT 0;

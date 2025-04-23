@@ -1,0 +1,110 @@
+-- CreateTable
+CREATE TABLE "RoboAdvisorMonthEquety" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "month_1" DOUBLE PRECISION NOT NULL,
+    "month_2" DOUBLE PRECISION NOT NULL,
+    "month_3" DOUBLE PRECISION NOT NULL,
+    "month_4" DOUBLE PRECISION NOT NULL,
+    "month_5" DOUBLE PRECISION NOT NULL,
+    "month_6" DOUBLE PRECISION NOT NULL,
+    "month_7" DOUBLE PRECISION NOT NULL,
+    "month_8" DOUBLE PRECISION NOT NULL,
+    "month_9" DOUBLE PRECISION NOT NULL,
+    "month_10" DOUBLE PRECISION NOT NULL,
+    "month_11" DOUBLE PRECISION NOT NULL,
+    "month_12" DOUBLE PRECISION NOT NULL,
+    "month_13" DOUBLE PRECISION NOT NULL,
+    "month_14" DOUBLE PRECISION NOT NULL,
+    "month_15" DOUBLE PRECISION NOT NULL,
+    "month_16" DOUBLE PRECISION NOT NULL,
+    "month_17" DOUBLE PRECISION NOT NULL,
+    "month_18" DOUBLE PRECISION NOT NULL,
+    "month_19" DOUBLE PRECISION NOT NULL,
+    "month_20" DOUBLE PRECISION NOT NULL,
+    "month_21" DOUBLE PRECISION NOT NULL,
+    "month_22" DOUBLE PRECISION NOT NULL,
+    "month_23" DOUBLE PRECISION NOT NULL,
+    "month_24" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "RoboAdvisorMonthEquety_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RoboAdvisorEquety" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "week_1" DOUBLE PRECISION NOT NULL,
+    "week_2" DOUBLE PRECISION NOT NULL,
+    "week_3" DOUBLE PRECISION NOT NULL,
+    "week_4" DOUBLE PRECISION NOT NULL,
+    "week_5" DOUBLE PRECISION NOT NULL,
+    "week_6" DOUBLE PRECISION NOT NULL,
+    "week_7" DOUBLE PRECISION NOT NULL,
+    "week_8" DOUBLE PRECISION NOT NULL,
+    "week_9" DOUBLE PRECISION NOT NULL,
+    "week_10" DOUBLE PRECISION NOT NULL,
+    "week_11" DOUBLE PRECISION NOT NULL,
+    "week_12" DOUBLE PRECISION NOT NULL,
+    "week_13" DOUBLE PRECISION NOT NULL,
+    "week_14" DOUBLE PRECISION NOT NULL,
+    "week_15" DOUBLE PRECISION NOT NULL,
+    "week_16" DOUBLE PRECISION NOT NULL,
+    "week_17" DOUBLE PRECISION NOT NULL,
+    "week_18" DOUBLE PRECISION NOT NULL,
+    "week_19" DOUBLE PRECISION NOT NULL,
+    "week_20" DOUBLE PRECISION NOT NULL,
+    "week_21" DOUBLE PRECISION NOT NULL,
+    "week_22" DOUBLE PRECISION NOT NULL,
+    "week_23" DOUBLE PRECISION NOT NULL,
+    "week_24" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "RoboAdvisorEquety_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RoboAdvisorAnalytics" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "TypeImpulse" DOUBLE PRECISION NOT NULL,
+    "Attention" DOUBLE PRECISION NOT NULL,
+    "Veryfication" DOUBLE PRECISION NOT NULL,
+    "DaysCount" DOUBLE PRECISION NOT NULL,
+    "IdeasCount" DOUBLE PRECISION NOT NULL,
+    "IdeasUpdate" DOUBLE PRECISION NOT NULL,
+    "ProfitDealsPrecent" DOUBLE PRECISION NOT NULL,
+    "ProfitabilityIdea" DOUBLE PRECISION NOT NULL,
+    "ProfitPrecent" DOUBLE PRECISION NOT NULL,
+    "Power" DOUBLE PRECISION NOT NULL,
+    "ScriptNumber" DOUBLE PRECISION NOT NULL,
+    "TopActual" DOUBLE PRECISION NOT NULL,
+    "BottomActual" DOUBLE PRECISION NOT NULL,
+    "TurnUpLevel" DOUBLE PRECISION NOT NULL,
+    "TurnDownLevel" DOUBLE PRECISION NOT NULL,
+    "TopPrevious" DOUBLE PRECISION NOT NULL,
+    "ButtomPrevious" DOUBLE PRECISION NOT NULL,
+    "Resistance_2" DOUBLE PRECISION NOT NULL,
+    "Resistance_1" DOUBLE PRECISION NOT NULL,
+    "Support_2" DOUBLE PRECISION NOT NULL,
+    "Support_1" DOUBLE PRECISION NOT NULL,
+    "UpWavePrecent" DOUBLE PRECISION NOT NULL,
+    "DownWavePrecent" DOUBLE PRECISION NOT NULL,
+    "DayChangePrecent" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "RoboAdvisorAnalytics_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RoboAdvisorMonthEquety_bot_code_tf_key" ON "RoboAdvisorMonthEquety"("bot", "code", "tf");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RoboAdvisorEquety_bot_code_tf_key" ON "RoboAdvisorEquety"("bot", "code", "tf");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RoboAdvisorAnalytics_bot_code_tf_key" ON "RoboAdvisorAnalytics"("bot", "code", "tf");

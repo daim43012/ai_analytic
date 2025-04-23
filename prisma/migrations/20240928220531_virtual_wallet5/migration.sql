@@ -1,0 +1,27 @@
+-- CreateTable
+CREATE TABLE "VirtualWallet5" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "address" TEXT NOT NULL DEFAULT '0x0',
+    "statusTransacrion" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "lotsReward" DOUBLE PRECISION NOT NULL DEFAULT 0.001,
+    "etfReward" DOUBLE PRECISION NOT NULL DEFAULT 0.001,
+    "discount" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "buy" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "FTMCrate" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "checkDate" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "missedTokens" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "date" TEXT NOT NULL DEFAULT '1',
+    "checkDatePie" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "missedTokensPie" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "datePie" TEXT NOT NULL DEFAULT '1',
+    "dateDividents" TEXT NOT NULL DEFAULT '1',
+    "finalValue" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "withdrawlRevards" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "withdrawlDividents" DOUBLE PRECISION NOT NULL DEFAULT 0,
+
+    CONSTRAINT "VirtualWallet5_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VirtualWallet5_email_key" ON "VirtualWallet5"("email");

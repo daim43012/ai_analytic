@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "VirtualWallet" ADD COLUMN     "withdrawlDividents" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ADD COLUMN     "withdrawlRevards" DOUBLE PRECISION NOT NULL DEFAULT 0;

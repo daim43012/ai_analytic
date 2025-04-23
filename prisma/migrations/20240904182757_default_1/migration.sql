@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "StatusAndTokens" ALTER COLUMN "buy" SET DEFAULT 1,
+ALTER COLUMN "discount" SET DEFAULT 1,
+ALTER COLUMN "etfReward" SET DEFAULT 0.001;

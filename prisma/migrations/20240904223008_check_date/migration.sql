@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VirtualWallet" ADD COLUMN     "checkDate" DOUBLE PRECISION NOT NULL DEFAULT 0;

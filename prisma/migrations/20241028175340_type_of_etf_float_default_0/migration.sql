@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "ExchangeOrders" ADD COLUMN     "typeOfETF" DOUBLE PRECISION NOT NULL DEFAULT 0;

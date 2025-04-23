@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "ExchangeOrders" ADD COLUMN     "direction" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ADD COLUMN     "firstUser" TEXT NOT NULL DEFAULT 'test@gmail.com',
+ADD COLUMN     "quantity" DOUBLE PRECISION NOT NULL DEFAULT 0;

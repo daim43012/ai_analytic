@@ -1,0 +1,686 @@
+/* ------------------------------------------------------------
+* Template Name    : CryptoNex - Crypto Landing Page Template
+* Author           : WebFolio
+* Version          : 1.0
+------------------------------------------------------------ */
+
+/* ======================================================================
+  Table of Content:
+ 
+  01. Basic Styles
+  02. Preloader
+  03. Header Area
+  04. Hero Section
+  05. About Section
+  06. Market Section
+  07. Features Section
+  08. Process Section
+  09. App Section
+  10. Testimonial Section
+  11. Blog Section
+  12. FAQ Section
+  13. Contact Section
+  14. Footer Area
+====================================================================== */
+
+/* ----------------------------------------
+01. Basic Styles
+---------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Cabin", sans-serif;
+  transition: 0.3s;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+  color: #fff;
+  background: linear-gradient(180deg, #280850 0, #0e0142 20%, #400959 40%, #0e0142 80%, #0e0142);
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #fffa;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.logo {
+  width: 200px;
+}
+
+.button,
+.button-secondary {
+  display: inline-block;
+  padding: 10px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #fd961a;
+  border-radius: 6px;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.button::before,
+.button-secondary::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  background: #fd961a;
+  transition-duration: 0.3s;
+  z-index: -1;
+}
+.button {
+  color: #fff;
+}
+.button::before {
+  width: 100%;
+  inset: 0 0 auto auto;
+}
+.button:hover::before {
+  width: 0;
+}
+.button:hover {
+  background: transparent;
+  color: #fd961a;
+}
+.button-secondary {
+  color: #fd961a;
+}
+.button-secondary::before {
+  width: 0;
+  inset: 0 auto auto 0;
+}
+.button-secondary:hover::before {
+  width: 100%;
+}
+.button-secondary:hover {
+  color: #fff;
+  background-color: #fd961a;
+}
+
+.col-lg-12 .title {
+  margin-bottom: 60px;
+  text-align: center;
+}
+.title h2 {
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #fd961a;
+}
+.title h1 {
+  font-size: 46px;
+  font-weight: 600;
+}
+
+section {
+  padding: 50px 0;
+}
+
+.form-control {
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #fff1;
+  border-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.form-control::placeholder {
+  color: #fff5;
+}
+.form-control:focus {
+  color: #fff;
+  background-color: #fff1;
+  border-color: #fd961a;
+  outline: none;
+  box-shadow: none;
+}
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1185px;
+  }
+}
+
+#scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #fd961a;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-100vh);
+  transition: all 0.5s ease-out;
+}
+#scroll-top.active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* ----------------------------------------
+02. Preloader
+---------------------------------------- */
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f0230;
+  z-index: 1000;
+}
+.loader-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loader-ripple div {
+  position: absolute;
+  border: 4px solid #fd961a;
+  opacity: 1;
+  border-radius: 50%;
+  animation: loader-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.loader-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes loader-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+/* ----------------------------------------
+03. Header Area
+---------------------------------------- */
+
+header {
+  position: absolute;
+  width: 100%;
+  background-color: transparent;
+  padding: 26px 0;
+  transition: all 0.4s ease-in-out;
+}
+header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 0;
+  z-index: 10;
+  background-color: #280850;
+}
+.navbar li.nav-item {
+  padding: 0 2px;
+}
+.navbar a.nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+.navbar a.nav-link.active,
+.navbar a.nav-link:hover {
+  color: #fd961a;
+}
+.navbar-nav {
+  align-items: center;
+}
+.navbar-toggler {
+  color: transparent;
+}
+.navbar-toggler i {
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #280850;
+  }
+}
+
+/* ----------------------------------------
+04. Hero Section
+---------------------------------------- */
+
+.hero {
+  margin-top: 0;
+}
+.hero .main {
+  min-height: 100vh;
+}
+
+
+/* ----------------------------------------
+liya adds
+---------------------------------------- */
+
+.main-second-page {
+  min-height: 25vh;
+  margin-top: 15vh;
+}
+
+.about-section{
+  min-height: 25vh;
+}
+/* ----------------------------------------
+liya adds
+---------------------------------------- */
+
+
+.hero .content h1 {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.hero .content .button-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hero .content .play-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero .content .play-button img {
+  width: 40px;
+}
+.hero .content .play-button span {
+  color: #fff;
+}
+.partner-slider img {
+  width: 100%;
+  padding: 16px;
+  margin-top: auto;
+}
+
+@media (max-width: 992px) {
+  .hero .main {
+    margin-top: 100px;
+  }
+}
+
+/* ----------------------------------------
+05. About Section
+---------------------------------------- */
+
+.about {
+  margin-top: 100px;
+}
+.about .content ul li {
+  margin-bottom: 10px;
+}
+.about .content ul li::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f058";
+  font: var(--fa-font-solid);
+  margin-right: 6px;
+  color: #fd961a;
+}
+
+/* ----------------------------------------
+06. Market Section
+---------------------------------------- */
+
+.market li button {
+  padding: 8px 26px;
+  margin: 6px;
+  background-color: #fff1;
+}
+.market .table-responsive {
+  background-color: #fff1;
+  padding: 20px;
+  border-radius: 6px;
+}
+.market .table {
+  border-color: #fff2;
+}
+.market .table tr {
+  vertical-align: middle;
+}
+.market .table th,
+.market .table td {
+  background: transparent;
+  color: #fff;
+}
+.market .market-name {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.market .market-name img {
+  width: 50px;
+  margin-right: 10px;
+}
+.market .market-name h6 span::before {
+  content: "|";
+  margin: 0 10px;
+}
+.market .market-sale-up {
+  color: #16c784 !important;
+}
+.market .market-sale-down {
+  color: #ea3943 !important;
+}
+.market a.button,
+.market a.button-secondary {
+  padding: 6px 22px;
+}
+
+/* ----------------------------------------
+07. Features Section
+---------------------------------------- */
+
+.feature-card {
+  background-color: #fff1;
+  padding: 20px;
+  border-radius: 6px;
+}
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+.feature-card .icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fd961a;
+  background-color: #fd961a33;
+}
+.feature-card a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fd961a;
+}
+.feature-card a:hover {
+  gap: 20px;
+}
+
+/* ----------------------------------------
+08. Process Section
+---------------------------------------- */
+
+.owl-carousel .owl-stage-outer {
+  padding: 20px 20px 0 0;
+}
+.process-card {
+  background-color: #fff1;
+  padding: 20px;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 20px;
+}
+.process-card span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fd961a;
+}
+
+/* ----------------------------------------
+09. App Section
+---------------------------------------- */
+
+.app .content li {
+  margin-bottom: 16px;
+}
+.app .content li::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f058";
+  font: var(--fa-font-solid);
+  margin-right: 6px;
+  color: #fd961a;
+}
+.app .content img {
+  width: 180px;
+}
+
+/* ----------------------------------------
+10. Testimonial Section
+---------------------------------------- */
+
+.testimonial-card {
+  background-color: #fff1;
+  padding: 20px;
+  border-radius: 6px;
+  position: relative;
+  margin-top: 50px;
+}
+.testimonial-card .image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  overflow: hidden;
+  padding: 2px;
+  border: 2px solid #fd961a;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.testimonial-card .image img {
+  width: 100%;
+  border-radius: 50%;
+}
+.testimonial-card .content {
+  text-align: center;
+  margin-top: 50px;
+}
+.testimonial-card i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-100%, -50%);
+  font-size: 44px;
+  color: #fd961a;
+}
+
+/* ----------------------------------------
+11. Blog Section
+---------------------------------------- */
+
+.blog-card {
+  background-color: #fff1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.blog-card .image {
+  display: flex;
+}
+.blog-card .content {
+  padding: 20px;
+}
+.blog-card .content h6 i {
+  color: #fd961a;
+  margin-right: 10px;
+}
+.blog-card .content h3 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+.blog-card .content a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fd961a;
+}
+.blog-card .content a:hover {
+  gap: 20px;
+}
+
+/* ----------------------------------------
+12. FAQ Section
+---------------------------------------- */
+
+.faq .accordion * {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  color: #fff;
+}
+.faq button.accordion-button {
+  background-color: #fff1 !important;
+  margin: 10px 0;
+}
+.accordion {
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* ----------------------------------------
+13. Contact Section
+---------------------------------------- */
+
+.contact li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.contact li i {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fd961a;
+}
+.contact .form-control {
+  margin-bottom: 20px;
+}
+
+/* ----------------------------------------
+14. Footer Area
+---------------------------------------- */
+
+footer {
+  margin-top: 100px;
+}
+footer .row {
+  padding: 20px 0;
+}
+footer .info p {
+  margin: 20px 0;
+}
+footer .info li {
+  margin-bottom: 10px;
+}
+footer .info li,
+footer .info li a {
+  display: flex;
+  align-items: center;
+}
+footer .info li i {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fd961a;
+  margin-right: 10px;
+}
+footer h4 {
+  margin-bottom: 20px;
+}
+footer .list li {
+  margin-bottom: 10px;
+}
+footer .list li a:hover {
+  color: #fd961a;
+  padding-left: 5px;
+}
+footer .news-letter .form-control {
+  margin-bottom: 10px;
+}
+
+footer .copyright {
+  border-top: 1px solid #fff1;
+}
+footer .copyright p {
+  margin: 0;
+}
+footer .copyright p a {
+  color: #fd961a;
+}
+footer .copyright ul {
+  gap: 10px;
+}
+footer .copyright li i {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fd961a;
+  background-color: #fd961a33;
+}
+footer .copyright li i:hover {
+  color: #fff;
+  background-color: #fd961a;
+}

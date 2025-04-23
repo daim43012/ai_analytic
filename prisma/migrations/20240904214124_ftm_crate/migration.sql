@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VirtualWallet" ADD COLUMN     "FTMCrate" DOUBLE PRECISION NOT NULL DEFAULT 1;

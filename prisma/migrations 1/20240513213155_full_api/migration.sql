@@ -1,0 +1,73 @@
+-- CreateTable
+CREATE TABLE "ETF2portfolio" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "script" DOUBLE PRECISION NOT NULL,
+    "percent1" DOUBLE PRECISION NOT NULL,
+    "percent2" DOUBLE PRECISION NOT NULL,
+    "percent3" DOUBLE PRECISION NOT NULL,
+    "percent4" DOUBLE PRECISION NOT NULL,
+    "percent5" DOUBLE PRECISION NOT NULL,
+    "percent6" DOUBLE PRECISION NOT NULL,
+    "percent7" DOUBLE PRECISION NOT NULL,
+    "percent8" DOUBLE PRECISION NOT NULL,
+    "percent9" DOUBLE PRECISION NOT NULL,
+    "percent10" DOUBLE PRECISION NOT NULL,
+    "change1" DOUBLE PRECISION NOT NULL,
+    "change2" DOUBLE PRECISION NOT NULL,
+    "change3" DOUBLE PRECISION NOT NULL,
+    "change4" DOUBLE PRECISION NOT NULL,
+    "change5" DOUBLE PRECISION NOT NULL,
+    "change6" DOUBLE PRECISION NOT NULL,
+    "change7" DOUBLE PRECISION NOT NULL,
+    "change8" DOUBLE PRECISION NOT NULL,
+    "change9" DOUBLE PRECISION NOT NULL,
+    "change10" DOUBLE PRECISION NOT NULL,
+    "day" DOUBLE PRECISION NOT NULL,
+    "week" DOUBLE PRECISION NOT NULL,
+    "month" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "ETF2portfolio_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ETF3portfolio" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "script" DOUBLE PRECISION NOT NULL,
+    "percent1" DOUBLE PRECISION NOT NULL,
+    "percent2" DOUBLE PRECISION NOT NULL,
+    "percent3" DOUBLE PRECISION NOT NULL,
+    "percent4" DOUBLE PRECISION NOT NULL,
+    "percent5" DOUBLE PRECISION NOT NULL,
+    "percent6" DOUBLE PRECISION NOT NULL,
+    "percent7" DOUBLE PRECISION NOT NULL,
+    "percent8" DOUBLE PRECISION NOT NULL,
+    "percent9" DOUBLE PRECISION NOT NULL,
+    "percent10" DOUBLE PRECISION NOT NULL,
+    "change1" DOUBLE PRECISION NOT NULL,
+    "change2" DOUBLE PRECISION NOT NULL,
+    "change3" DOUBLE PRECISION NOT NULL,
+    "change4" DOUBLE PRECISION NOT NULL,
+    "change5" DOUBLE PRECISION NOT NULL,
+    "change6" DOUBLE PRECISION NOT NULL,
+    "change7" DOUBLE PRECISION NOT NULL,
+    "change8" DOUBLE PRECISION NOT NULL,
+    "change9" DOUBLE PRECISION NOT NULL,
+    "change10" DOUBLE PRECISION NOT NULL,
+    "day" DOUBLE PRECISION NOT NULL,
+    "week" DOUBLE PRECISION NOT NULL,
+    "month" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "ETF3portfolio_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ETF2portfolio_bot_code_tf_key" ON "ETF2portfolio"("bot", "code", "tf");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ETF3portfolio_bot_code_tf_key" ON "ETF3portfolio"("bot", "code", "tf");

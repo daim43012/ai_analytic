@@ -1,0 +1,13 @@
+-- CreateTable
+CREATE TABLE "VirtualWallet" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL DEFAULT 'test@gmail.com',
+    "statusTransacrion" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "lotsReward" DOUBLE PRECISION NOT NULL DEFAULT 0.001,
+    "etfReward" DOUBLE PRECISION NOT NULL DEFAULT 0.001,
+    "discount" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "buy" DOUBLE PRECISION NOT NULL DEFAULT 1,
+    "date" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "VirtualWallet_pkey" PRIMARY KEY ("id")
+);

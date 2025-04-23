@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "EtfCrypto1" ALTER COLUMN "maxProfit" SET DATA TYPE DOUBLE PRECISION;

@@ -1,0 +1,2760 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String?
+  password String  @default("defaultPassword")
+  address  String?
+}
+
+model Transactions {
+  id                     Int      @id @default(autoincrement())
+  email                  String   @default("test@gmail.com")
+  orderId                Float    @unique
+  CurrencyFromChain      String   @default("")
+  CurrencyFromCode       String   @default("")
+  CurrencyToChain        String   @default("")
+  CurrencyToCode         String   @default("")
+  ClaimedIncomingAmount  Float    @default(0)
+  ClaimedPublicRate      Float    @default(0)
+  investDate             DateTime @default(now())
+  typeOfETF              Float    @default(0)
+  amountETF              Float    @default(0)
+  buyPrice               Float    @default(0)
+  status                 Int      @default(1)
+  totalProfit            Float    @default(0)
+  amount                 Float    @default(0)
+  valueIncludeAmount     Float    @default(0)
+  pieAmountIncludeAmount Float    @default(0)
+  totalFunded            Float    @default(0)
+  currencyRate           Float    @default(0)
+  commission             Float    @default(0)
+  commissionValue        Float    @default(0)
+  amountTokens           Float    @default(0)
+  isTokens               Float    @default(0)
+  address                String   @default("")
+  isAddedToSale          Float    @default(0)
+  tokenToSale            Float    @default(0)
+  isAddToTotal           Float    @default(0)
+}
+
+enum WalletType {
+  REFERRAL
+  BONUS
+}
+
+model TelegramGame {
+  id         Int      @id @default(autoincrement())
+  telegramId Int      @unique
+  firstName  String
+  lastName   String
+  createdAt  DateTime @default(now())
+}
+
+model StatSetf {
+  id                 Int        @id @default(autoincrement())
+  bot                String
+  code               String
+  tf                 StatSetfTf @default(h)
+  daysCount          Float
+  ideasCount         Float
+  ideasUpdate        Float
+  profitIdeasPercent Float
+  profitabilityIdea  Float
+  profitPercent      Float
+
+  @@unique([bot, code, tf])
+}
+
+enum StatSetfTf {
+  h
+  D
+}
+
+model etfCrypto1 {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  days         Float
+  totalProfit  Float
+  profitMax    Float
+  maxDropdown  Float
+  price1       Float
+  price2       Float
+  price3       Float
+  price4       Float
+  price5       Float
+  price6       Float
+  price7       Float
+  price8       Float
+  price9       Float
+  price10      Float
+  entryPrice1  Float
+  entryPrice2  Float
+  entryPrice3  Float
+  entryPrice4  Float
+  entryPrice5  Float
+  entryPrice6  Float
+  entryPrice7  Float
+  entryPrice8  Float
+  entryPrice9  Float
+  entryPrice10 Float
+
+  @@unique([bot, code, tf])
+}
+
+enum ETFCRYPTO1Tf {
+  h
+  D
+}
+
+model ETF1Eequity {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  week1  Float
+  week2  Float
+  week3  Float
+  week4  Float
+  week5  Float
+  week6  Float
+  week7  Float
+  week8  Float
+  week9  Float
+  week10 Float
+  week11 Float
+  week12 Float
+  week13 Float
+  week14 Float
+  week15 Float
+  week16 Float
+  week17 Float
+  week18 Float
+  week19 Float
+  week20 Float
+  week21 Float
+  week22 Float
+  week23 Float
+  week24 Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF2Eequity {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  week1  Float
+  week2  Float
+  week3  Float
+  week4  Float
+  week5  Float
+  week6  Float
+  week7  Float
+  week8  Float
+  week9  Float
+  week10 Float
+  week11 Float
+  week12 Float
+  week13 Float
+  week14 Float
+  week15 Float
+  week16 Float
+  week17 Float
+  week18 Float
+  week19 Float
+  week20 Float
+  week21 Float
+  week22 Float
+  week23 Float
+  week24 Float
+
+  @@unique([bot, code, tf])
+}
+
+model etfCrypto2 {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  startdate     Float
+  ratecom       Float
+  portfolioLoad Float
+  days          Float
+  totalProfit   Float
+  profitMax     Float
+  maxDropdown   Float
+  annualProfit  Float
+  price1        Float
+  price2        Float
+  price3        Float
+  price4        Float
+  price5        Float
+  price6        Float
+  price7        Float
+  price8        Float
+  price9        Float
+  price10       Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF3Eequity {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  week1  Float
+  week2  Float
+  week3  Float
+  week4  Float
+  week5  Float
+  week6  Float
+  week7  Float
+  week8  Float
+  week9  Float
+  week10 Float
+  week11 Float
+  week12 Float
+  week13 Float
+  week14 Float
+  week15 Float
+  week16 Float
+  week17 Float
+  week18 Float
+  week19 Float
+  week20 Float
+  week21 Float
+  week22 Float
+  week23 Float
+  week24 Float
+
+  @@unique([bot, code, tf])
+}
+
+model etfCrypto3 {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  startdate     Float
+  ratecom       Float
+  portfolioLoad Float
+  days          Float
+  totalProfit   Float
+  profitMax     Float
+  maxDropdown   Float
+  annualProfit  Float
+  price1        Float
+  price2        Float
+  price3        Float
+  price4        Float
+  price5        Float
+  price6        Float
+  price7        Float
+  price8        Float
+  price9        Float
+  price10       Float
+
+  @@unique([bot, code, tf])
+}
+
+model textsETF1 {
+  id    Int          @id @default(autoincrement())
+  bot   String
+  code  String
+  tf    ETFCRYPTO1Tf @default(h)
+  text1 String
+  text2 String
+  text3 String
+}
+
+model ETF1portfolio {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  portfolioLoad Float
+  inst_1        Float
+  inst_2        Float
+  inst_3        Float
+  inst_4        Float
+  inst_5        Float
+  inst_6        Float
+  inst_7        Float
+  inst_8        Float
+  inst_9        Float
+  inst_10       Float
+  change1       Float
+  change2       Float
+  change3       Float
+  change4       Float
+  change5       Float
+  change6       Float
+  change7       Float
+  change8       Float
+  change9       Float
+  change10      Float
+  day           Float
+  week          Float
+  month         Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF2portfolio {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  portfolioLoad Float
+  LTC           Float
+  BNB           Float
+  XRP           Float
+  TRX           Float
+  XLM           Float
+  ALGO          Float
+  OPU           Float
+  ATOM          Float
+  NEAR          Float
+  ARB           Float
+  change1       Float
+  change2       Float
+  change3       Float
+  change4       Float
+  change5       Float
+  change6       Float
+  change7       Float
+  change8       Float
+  change9       Float
+  change10      Float
+  day           Float
+  week          Float
+  month         Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF3portfolio {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  portfolioLoad Float
+  DOGE          Float
+  SHIB          Float
+  WIF           Float
+  PEPE          Float
+  FLOKI         Float
+  BONK          Float
+  ORDI          Float
+  BOME          Float
+  BCH           Float
+  ETH           Float
+  change1       Float
+  change2       Float
+  change3       Float
+  change4       Float
+  change5       Float
+  change6       Float
+  change7       Float
+  change8       Float
+  change9       Float
+  change10      Float
+  day           Float
+  week          Float
+  month         Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF1MonthEquity {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  month_24 Float
+  month_23 Float
+  month_22 Float
+  month_21 Float
+  month_20 Float
+  month_19 Float
+  month_18 Float
+  month_17 Float
+  month_16 Float
+  month_15 Float
+  month_14 Float
+  month_13 Float
+  month_12 Float
+  month_11 Float
+  month_10 Float
+  month_9  Float
+  month_8  Float
+  month_7  Float
+  month_6  Float
+  month_5  Float
+  month_4  Float
+  month_3  Float
+  month_2  Float
+  month_1  Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF2MonthEquity {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  month_24 Float
+  month_23 Float
+  month_22 Float
+  month_21 Float
+  month_20 Float
+  month_19 Float
+  month_18 Float
+  month_17 Float
+  month_16 Float
+  month_15 Float
+  month_14 Float
+  month_13 Float
+  month_12 Float
+  month_11 Float
+  month_10 Float
+  month_9  Float
+  month_8  Float
+  month_7  Float
+  month_6  Float
+  month_5  Float
+  month_4  Float
+  month_3  Float
+  month_2  Float
+  month_1  Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF3MonthEquity {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  month_24 Float
+  month_23 Float
+  month_22 Float
+  month_21 Float
+  month_20 Float
+  month_19 Float
+  month_18 Float
+  month_17 Float
+  month_16 Float
+  month_15 Float
+  month_14 Float
+  month_13 Float
+  month_12 Float
+  month_11 Float
+  month_10 Float
+  month_9  Float
+  month_8  Float
+  month_7  Float
+  month_6  Float
+  month_5  Float
+  month_4  Float
+  month_3  Float
+  month_2  Float
+  month_1  Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF1MonthPriceChange {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  oneMonth_1    Float
+  oneMonth_2    Float
+  oneMonth_3    Float
+  oneMonth_4    Float
+  oneMonth_5    Float
+  oneMonth_6    Float
+  oneMonth_7    Float
+  oneMonth_8    Float
+  oneMonth_9    Float
+  oneMonth_10   Float
+  threeMonth_1  Float
+  threeMonth_2  Float
+  threeMonth_3  Float
+  threeMonth_4  Float
+  threeMonth_5  Float
+  threeMonth_6  Float
+  threeMonth_7  Float
+  threeMonth_8  Float
+  threeMonth_9  Float
+  threeMonth_10 Float
+  minSpread     Float
+  maxSpread     Float
+  fastMomentum  Float
+  slowMomentum  Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF2MonthPriceChange {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  oneMonth_1    Float
+  oneMonth_2    Float
+  oneMonth_3    Float
+  oneMonth_4    Float
+  oneMonth_5    Float
+  oneMonth_6    Float
+  oneMonth_7    Float
+  oneMonth_8    Float
+  oneMonth_9    Float
+  oneMonth_10   Float
+  threeMonth_1  Float
+  threeMonth_2  Float
+  threeMonth_3  Float
+  threeMonth_4  Float
+  threeMonth_5  Float
+  threeMonth_6  Float
+  threeMonth_7  Float
+  threeMonth_8  Float
+  threeMonth_9  Float
+  threeMonth_10 Float
+  minSpread     Float
+  maxSpread     Float
+  fastMomentum  Float
+  slowMomentum  Float
+
+  @@unique([bot, code, tf])
+}
+
+model ETF3MonthPriceChange {
+  id            Int          @id @default(autoincrement())
+  bot           String
+  code          String
+  tf            ETFCRYPTO1Tf @default(h)
+  oneMonth_1    Float
+  oneMonth_2    Float
+  oneMonth_3    Float
+  oneMonth_4    Float
+  oneMonth_5    Float
+  oneMonth_6    Float
+  oneMonth_7    Float
+  oneMonth_8    Float
+  oneMonth_9    Float
+  oneMonth_10   Float
+  threeMonth_1  Float
+  threeMonth_2  Float
+  threeMonth_3  Float
+  threeMonth_4  Float
+  threeMonth_5  Float
+  threeMonth_6  Float
+  threeMonth_7  Float
+  threeMonth_8  Float
+  threeMonth_9  Float
+  threeMonth_10 Float
+  minSpread     Float
+  maxSpread     Float
+  fastMomentum  Float
+  slowMomentum  Float
+
+  @@unique([bot, code, tf])
+}
+
+model RoboAdvisorMonthEquety {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  month_1  Float
+  month_2  Float
+  month_3  Float
+  month_4  Float
+  month_5  Float
+  month_6  Float
+  month_7  Float
+  month_8  Float
+  month_9  Float
+  month_10 Float
+  month_11 Float
+  month_12 Float
+  month_13 Float
+  month_14 Float
+  month_15 Float
+  month_16 Float
+  month_17 Float
+  month_18 Float
+  month_19 Float
+  month_20 Float
+  month_21 Float
+  month_22 Float
+  month_23 Float
+  month_24 Float
+  month_25 Float
+  month_26 Float
+  month_27 Float
+  month_28 Float
+  month_29 Float
+  month_30 Float
+  month_31 Float
+  month_32 Float
+  month_33 Float
+  month_34 Float
+  month_35 Float
+  month_36 Float
+  month_37 Float
+  month_38 Float
+  month_39 Float
+  month_40 Float
+  month_41 Float
+  month_42 Float
+  month_43 Float
+  month_44 Float
+  month_45 Float
+  month_46 Float
+  month_47 Float
+  month_48 Float
+  month_49 Float
+  month_50 Float
+  month_51 Float
+  month_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model RoboAdvisorEquety {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  week_1  Float
+  week_2  Float
+  week_3  Float
+  week_4  Float
+  week_5  Float
+  week_6  Float
+  week_7  Float
+  week_8  Float
+  week_9  Float
+  week_10 Float
+  week_11 Float
+  week_12 Float
+  week_13 Float
+  week_14 Float
+  week_15 Float
+  week_16 Float
+  week_17 Float
+  week_18 Float
+  week_19 Float
+  week_20 Float
+  week_21 Float
+  week_22 Float
+  week_23 Float
+  week_24 Float
+  week_25 Float
+  week_26 Float
+  week_27 Float
+  week_28 Float
+  week_29 Float
+  week_30 Float
+  week_31 Float
+  week_32 Float
+  week_33 Float
+  week_34 Float
+  week_35 Float
+  week_36 Float
+  week_37 Float
+  week_38 Float
+  week_39 Float
+  week_40 Float
+  week_41 Float
+  week_42 Float
+  week_43 Float
+  week_44 Float
+  week_45 Float
+  week_46 Float
+  week_47 Float
+  week_48 Float
+  week_49 Float
+  week_50 Float
+  week_51 Float
+  week_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model RoboAdvisorAnalytics {
+  id                Int          @id @default(autoincrement())
+  bot               String
+  code              String
+  tf                ETFCRYPTO1Tf @default(h)
+  TypeImpulse       Float
+  Attention         Float
+  Veryfication      Float
+  DaysCount         Float
+  IdeasCount        Float
+  IdeasUpdate       Float
+  ProfitIdealsPct   Float        @default(0)
+  ProfitabilityIdea Float
+  ProfitPct         Float        @default(0)
+  Power             Float
+  ScriptNumber      Float
+  TopActual         Float
+  BottomActual      Float
+  TurnUpLevel       Float
+  TurnDownLevel     Float
+  TopPrevious       Float
+  ButtomPrevious    Float
+  L11               Float        @default(0)
+  L21               Float        @default(0)
+  delta1            Float        @default(0)
+  date1             Float        @default(0)
+  L12               Float        @default(0)
+  L22               Float        @default(0)
+  delta2            Float        @default(0)
+  date2             Float        @default(0)
+  L3                Float        @default(0)
+  L4                Float        @default(0)
+  resistans2        Float        @default(0)
+  resistans1        Float        @default(0)
+  support1          Float        @default(0)
+  support2          Float        @default(0)
+  Closesession1     Float        @default(0)
+  Closesession2     Float        @default(0)
+  dateClose         Float        @default(0)
+  dateClosePrev     Float        @default(0)
+  FclosePct         Float        @default(0)
+  FclosePrevPct     Float        @default(0)
+  Maxsession2       Float        @default(0)
+  Maxsession1       Float        @default(0)
+  Minsession2       Float        @default(0)
+  Minsession1       Float        @default(0)
+  RangeExt          Float        @default(0)
+  ATR               Float        @default(0)
+  upWsize           Float        @default(0)
+  dwWsize           Float        @default(0)
+  EMA               Float        @default(0)
+  close             Float        @default(0)
+  Time              Float        @default(0)
+  Open              Float        @default(0)
+  Max               Float        @default(0)
+  Min               Float        @default(0)
+  Volume            Float        @default(0)
+
+  @@unique([bot, code, tf])
+}
+
+model RoboAdvisorEquetyWeekData {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  week_1  Float
+  week_2  Float
+  week_3  Float
+  week_4  Float
+  week_5  Float
+  week_6  Float
+  week_7  Float
+  week_8  Float
+  week_9  Float
+  week_10 Float
+  week_11 Float
+  week_12 Float
+  week_13 Float
+  week_14 Float
+  week_15 Float
+  week_16 Float
+  week_17 Float
+  week_18 Float
+  week_19 Float
+  week_20 Float
+  week_21 Float
+  week_22 Float
+  week_23 Float
+  week_24 Float
+  week_25 Float
+  week_26 Float
+  week_27 Float
+  week_28 Float
+  week_29 Float
+  week_30 Float
+  week_31 Float
+  week_32 Float
+  week_33 Float
+  week_34 Float
+  week_35 Float
+  week_36 Float
+  week_37 Float
+  week_38 Float
+  week_39 Float
+  week_40 Float
+  week_41 Float
+  week_42 Float
+  week_43 Float
+  week_44 Float
+  week_45 Float
+  week_46 Float
+  week_47 Float
+  week_48 Float
+  week_49 Float
+  week_50 Float
+  week_51 Float
+  week_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model PoolTransactions {
+  id         Int        @id @default(autoincrement())
+  bot        String
+  code       String
+  tf         StatSetfTf @default(h)
+  etfType    String
+  Symbol     String
+  Entrydate  Float
+  Entrytime  Float
+  Entryprice Float
+  Exitdate   Float
+  Exittime   Float
+  Exitprice  Float
+  Change     Float
+  Status     Float
+
+  @@unique([bot, code, tf])
+}
+
+model InstrumentChartsData {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  date         Float
+  CurrentTime  Float
+  CurrentClose Float
+  time         Float
+  close        Float
+
+  @@unique([bot, code, tf])
+}
+
+model InstrumentChartsDataToSave {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  date         Float
+  CurrentTime  Float
+  CurrentClose Float
+  time         Float
+  close        Float
+
+  // @@unique([bot, code, tf])
+}
+
+model OpenCandelData {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  open_1  Float
+  open_2  Float
+  open_3  Float
+  open_4  Float
+  open_5  Float
+  open_6  Float
+  open_7  Float
+  open_8  Float
+  open_9  Float
+  open_10 Float
+  open_11 Float
+  open_12 Float
+  open_13 Float
+  open_14 Float
+  open_15 Float
+  open_16 Float
+  open_17 Float
+  open_18 Float
+  open_19 Float
+  open_20 Float
+  open_21 Float
+  open_22 Float
+  open_23 Float
+  open_24 Float //here
+  open_25 Float
+  open_26 Float
+  open_27 Float
+  open_28 Float
+  open_29 Float
+  open_30 Float
+  open_31 Float
+  open_32 Float
+  open_33 Float
+  open_34 Float
+  open_35 Float
+  open_36 Float
+  open_37 Float
+  open_38 Float
+  open_39 Float
+  open_40 Float
+  open_41 Float
+  open_42 Float
+  open_43 Float
+  open_44 Float
+  open_45 Float
+  open_46 Float
+  open_47 Float
+  open_48 Float
+  open_49 Float
+  open_50 Float
+  open_51 Float
+  open_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model CloseCandelData {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  close_1  Float
+  close_2  Float
+  close_3  Float
+  close_4  Float
+  close_5  Float
+  close_6  Float
+  close_7  Float
+  close_8  Float
+  close_9  Float
+  close_10 Float
+  close_11 Float
+  close_12 Float
+  close_13 Float
+  close_14 Float
+  close_15 Float
+  close_16 Float
+  close_17 Float
+  close_18 Float
+  close_19 Float
+  close_20 Float
+  close_21 Float
+  close_22 Float
+  close_23 Float
+  close_24 Float //here
+  close_25 Float
+  close_26 Float
+  close_27 Float
+  close_28 Float
+  close_29 Float
+  close_30 Float
+  close_31 Float
+  close_32 Float
+  close_33 Float
+  close_34 Float
+  close_35 Float
+  close_36 Float
+  close_37 Float
+  close_38 Float
+  close_39 Float
+  close_40 Float
+  close_41 Float
+  close_42 Float
+  close_43 Float
+  close_44 Float
+  close_45 Float
+  close_46 Float
+  close_47 Float
+  close_48 Float
+  close_49 Float
+  close_50 Float
+  close_51 Float
+  close_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MaxCandelData {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  max_1  Float
+  max_2  Float
+  max_3  Float
+  max_4  Float
+  max_5  Float
+  max_6  Float
+  max_7  Float
+  max_8  Float
+  max_9  Float
+  max_10 Float
+  max_11 Float
+  max_12 Float
+  max_13 Float
+  max_14 Float
+  max_15 Float
+  max_16 Float
+  max_17 Float
+  max_18 Float
+  max_19 Float
+  max_20 Float
+  max_21 Float
+  max_22 Float
+  max_23 Float
+  max_24 Float //here
+  max_25 Float
+  max_26 Float
+  max_27 Float
+  max_28 Float
+  max_29 Float
+  max_30 Float
+  max_31 Float
+  max_32 Float
+  max_33 Float
+  max_34 Float
+  max_35 Float
+  max_36 Float
+  max_37 Float
+  max_38 Float
+  max_39 Float
+  max_40 Float
+  max_41 Float
+  max_42 Float
+  max_43 Float
+  max_44 Float
+  max_45 Float
+  max_46 Float
+  max_47 Float
+  max_48 Float
+  max_49 Float
+  max_50 Float
+  max_51 Float
+  max_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MinCandelData {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  min_1  Float
+  min_2  Float
+  min_3  Float
+  min_4  Float
+  min_5  Float
+  min_6  Float
+  min_7  Float
+  min_8  Float
+  min_9  Float
+  min_10 Float
+  min_11 Float
+  min_12 Float
+  min_13 Float
+  min_14 Float
+  min_15 Float
+  min_16 Float
+  min_17 Float
+  min_18 Float
+  min_19 Float
+  min_20 Float
+  min_21 Float
+  min_22 Float
+  min_23 Float
+  min_24 Float
+  min_25 Float
+  min_26 Float
+  min_27 Float
+  min_28 Float
+  min_29 Float
+  min_30 Float
+  min_31 Float
+  min_32 Float
+  min_33 Float
+  min_34 Float
+  min_35 Float
+  min_36 Float
+  min_37 Float
+  min_38 Float
+  min_39 Float
+  min_40 Float
+  min_41 Float
+  min_42 Float
+  min_43 Float
+  min_44 Float
+  min_45 Float
+  min_46 Float
+  min_47 Float
+  min_48 Float
+  min_49 Float
+  min_50 Float
+  min_51 Float
+  min_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model TimeCandelData {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  time_1  Float
+  time_2  Float
+  time_3  Float
+  time_4  Float
+  time_5  Float
+  time_6  Float
+  time_7  Float
+  time_8  Float
+  time_9  Float
+  time_10 Float
+  time_11 Float
+  time_12 Float
+  time_13 Float
+  time_14 Float
+  time_15 Float
+  time_16 Float
+  time_17 Float
+  time_18 Float
+  time_19 Float
+  time_20 Float
+  time_21 Float
+  time_22 Float
+  time_23 Float
+  time_24 Float
+  time_25 Float
+  time_26 Float
+  time_27 Float
+  time_28 Float
+  time_29 Float
+  time_30 Float
+  time_31 Float
+  time_32 Float
+  time_33 Float
+  time_34 Float
+  time_35 Float
+  time_36 Float
+  time_37 Float
+  time_38 Float
+  time_39 Float
+  time_40 Float
+  time_41 Float
+  time_42 Float
+  time_43 Float
+  time_44 Float
+  time_45 Float
+  time_46 Float
+  time_47 Float
+  time_48 Float
+  time_49 Float
+  time_50 Float
+  time_51 Float
+  time_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model FtmTerminalApi {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  timeLong     Float
+  timeShort    Float
+  dateLong     Float
+  dateShort    Float
+  sizePosition Float
+  direction    Float
+  enterPrice   Float
+  stopPrice    Float
+  pnlPosition  Float
+  riskPosition Float
+
+  @@unique([bot, code, tf])
+}
+
+model OpenCandelDataWeek {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  open_1  Float
+  open_2  Float
+  open_3  Float
+  open_4  Float
+  open_5  Float
+  open_6  Float
+  open_7  Float
+  open_8  Float
+  open_9  Float
+  open_10 Float
+  open_11 Float
+  open_12 Float
+  open_13 Float
+  open_14 Float
+  open_15 Float
+  open_16 Float
+  open_17 Float
+  open_18 Float
+  open_19 Float
+  open_20 Float
+  open_21 Float
+  open_22 Float
+  open_23 Float
+  open_24 Float //here
+  open_25 Float
+  open_26 Float
+  open_27 Float
+  open_28 Float
+  open_29 Float
+  open_30 Float
+  open_31 Float
+  open_32 Float
+  open_33 Float
+  open_34 Float
+  open_35 Float
+  open_36 Float
+  open_37 Float
+  open_38 Float
+  open_39 Float
+  open_40 Float
+  open_41 Float
+  open_42 Float
+  open_43 Float
+  open_44 Float
+  open_45 Float
+  open_46 Float
+  open_47 Float
+  open_48 Float
+  open_49 Float
+  open_50 Float
+  open_51 Float
+  open_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model CloseCandelDataWeek {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  close_1  Float
+  close_2  Float
+  close_3  Float
+  close_4  Float
+  close_5  Float
+  close_6  Float
+  close_7  Float
+  close_8  Float
+  close_9  Float
+  close_10 Float
+  close_11 Float
+  close_12 Float
+  close_13 Float
+  close_14 Float
+  close_15 Float
+  close_16 Float
+  close_17 Float
+  close_18 Float
+  close_19 Float
+  close_20 Float
+  close_21 Float
+  close_22 Float
+  close_23 Float
+  close_24 Float //here
+  close_25 Float
+  close_26 Float
+  close_27 Float
+  close_28 Float
+  close_29 Float
+  close_30 Float
+  close_31 Float
+  close_32 Float
+  close_33 Float
+  close_34 Float
+  close_35 Float
+  close_36 Float
+  close_37 Float
+  close_38 Float
+  close_39 Float
+  close_40 Float
+  close_41 Float
+  close_42 Float
+  close_43 Float
+  close_44 Float
+  close_45 Float
+  close_46 Float
+  close_47 Float
+  close_48 Float
+  close_49 Float
+  close_50 Float
+  close_51 Float
+  close_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MaxCandelDataWeek {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  max_1  Float
+  max_2  Float
+  max_3  Float
+  max_4  Float
+  max_5  Float
+  max_6  Float
+  max_7  Float
+  max_8  Float
+  max_9  Float
+  max_10 Float
+  max_11 Float
+  max_12 Float
+  max_13 Float
+  max_14 Float
+  max_15 Float
+  max_16 Float
+  max_17 Float
+  max_18 Float
+  max_19 Float
+  max_20 Float
+  max_21 Float
+  max_22 Float
+  max_23 Float
+  max_24 Float //here
+  max_25 Float
+  max_26 Float
+  max_27 Float
+  max_28 Float
+  max_29 Float
+  max_30 Float
+  max_31 Float
+  max_32 Float
+  max_33 Float
+  max_34 Float
+  max_35 Float
+  max_36 Float
+  max_37 Float
+  max_38 Float
+  max_39 Float
+  max_40 Float
+  max_41 Float
+  max_42 Float
+  max_43 Float
+  max_44 Float
+  max_45 Float
+  max_46 Float
+  max_47 Float
+  max_48 Float
+  max_49 Float
+  max_50 Float
+  max_51 Float
+  max_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MinCandelDataWeek {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  min_1  Float
+  min_2  Float
+  min_3  Float
+  min_4  Float
+  min_5  Float
+  min_6  Float
+  min_7  Float
+  min_8  Float
+  min_9  Float
+  min_10 Float
+  min_11 Float
+  min_12 Float
+  min_13 Float
+  min_14 Float
+  min_15 Float
+  min_16 Float
+  min_17 Float
+  min_18 Float
+  min_19 Float
+  min_20 Float
+  min_21 Float
+  min_22 Float
+  min_23 Float
+  min_24 Float
+  min_25 Float
+  min_26 Float
+  min_27 Float
+  min_28 Float
+  min_29 Float
+  min_30 Float
+  min_31 Float
+  min_32 Float
+  min_33 Float
+  min_34 Float
+  min_35 Float
+  min_36 Float
+  min_37 Float
+  min_38 Float
+  min_39 Float
+  min_40 Float
+  min_41 Float
+  min_42 Float
+  min_43 Float
+  min_44 Float
+  min_45 Float
+  min_46 Float
+  min_47 Float
+  min_48 Float
+  min_49 Float
+  min_50 Float
+  min_51 Float
+  min_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model TimeCandelDataWeek {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  time_1  Float
+  time_2  Float
+  time_3  Float
+  time_4  Float
+  time_5  Float
+  time_6  Float
+  time_7  Float
+  time_8  Float
+  time_9  Float
+  time_10 Float
+  time_11 Float
+  time_12 Float
+  time_13 Float
+  time_14 Float
+  time_15 Float
+  time_16 Float
+  time_17 Float
+  time_18 Float
+  time_19 Float
+  time_20 Float
+  time_21 Float
+  time_22 Float
+  time_23 Float
+  time_24 Float
+  time_25 Float
+  time_26 Float
+  time_27 Float
+  time_28 Float
+  time_29 Float
+  time_30 Float
+  time_31 Float
+  time_32 Float
+  time_33 Float
+  time_34 Float
+  time_35 Float
+  time_36 Float
+  time_37 Float
+  time_38 Float
+  time_39 Float
+  time_40 Float
+  time_41 Float
+  time_42 Float
+  time_43 Float
+  time_44 Float
+  time_45 Float
+  time_46 Float
+  time_47 Float
+  time_48 Float
+  time_49 Float
+  time_50 Float
+  time_51 Float
+  time_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model OpenCandelDataDay {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  open_1  Float
+  open_2  Float
+  open_3  Float
+  open_4  Float
+  open_5  Float
+  open_6  Float
+  open_7  Float
+  open_8  Float
+  open_9  Float
+  open_10 Float
+  open_11 Float
+  open_12 Float
+  open_13 Float
+  open_14 Float
+  open_15 Float
+  open_16 Float
+  open_17 Float
+  open_18 Float
+  open_19 Float
+  open_20 Float
+  open_21 Float
+  open_22 Float
+  open_23 Float
+  open_24 Float //here
+  open_25 Float
+  open_26 Float
+  open_27 Float
+  open_28 Float
+  open_29 Float
+  open_30 Float
+  open_31 Float
+  open_32 Float
+  open_33 Float
+  open_34 Float
+  open_35 Float
+  open_36 Float
+  open_37 Float
+  open_38 Float
+  open_39 Float
+  open_40 Float
+  open_41 Float
+  open_42 Float
+  open_43 Float
+  open_44 Float
+  open_45 Float
+  open_46 Float
+  open_47 Float
+  open_48 Float
+  open_49 Float
+  open_50 Float
+  open_51 Float
+  open_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model CloseCandelDataDay {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  close_1  Float
+  close_2  Float
+  close_3  Float
+  close_4  Float
+  close_5  Float
+  close_6  Float
+  close_7  Float
+  close_8  Float
+  close_9  Float
+  close_10 Float
+  close_11 Float
+  close_12 Float
+  close_13 Float
+  close_14 Float
+  close_15 Float
+  close_16 Float
+  close_17 Float
+  close_18 Float
+  close_19 Float
+  close_20 Float
+  close_21 Float
+  close_22 Float
+  close_23 Float
+  close_24 Float //here
+  close_25 Float
+  close_26 Float
+  close_27 Float
+  close_28 Float
+  close_29 Float
+  close_30 Float
+  close_31 Float
+  close_32 Float
+  close_33 Float
+  close_34 Float
+  close_35 Float
+  close_36 Float
+  close_37 Float
+  close_38 Float
+  close_39 Float
+  close_40 Float
+  close_41 Float
+  close_42 Float
+  close_43 Float
+  close_44 Float
+  close_45 Float
+  close_46 Float
+  close_47 Float
+  close_48 Float
+  close_49 Float
+  close_50 Float
+  close_51 Float
+  close_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MaxCandelDataDay {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  max_1  Float
+  max_2  Float
+  max_3  Float
+  max_4  Float
+  max_5  Float
+  max_6  Float
+  max_7  Float
+  max_8  Float
+  max_9  Float
+  max_10 Float
+  max_11 Float
+  max_12 Float
+  max_13 Float
+  max_14 Float
+  max_15 Float
+  max_16 Float
+  max_17 Float
+  max_18 Float
+  max_19 Float
+  max_20 Float
+  max_21 Float
+  max_22 Float
+  max_23 Float
+  max_24 Float //here
+  max_25 Float
+  max_26 Float
+  max_27 Float
+  max_28 Float
+  max_29 Float
+  max_30 Float
+  max_31 Float
+  max_32 Float
+  max_33 Float
+  max_34 Float
+  max_35 Float
+  max_36 Float
+  max_37 Float
+  max_38 Float
+  max_39 Float
+  max_40 Float
+  max_41 Float
+  max_42 Float
+  max_43 Float
+  max_44 Float
+  max_45 Float
+  max_46 Float
+  max_47 Float
+  max_48 Float
+  max_49 Float
+  max_50 Float
+  max_51 Float
+  max_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MinCandelDataDay {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  min_1  Float
+  min_2  Float
+  min_3  Float
+  min_4  Float
+  min_5  Float
+  min_6  Float
+  min_7  Float
+  min_8  Float
+  min_9  Float
+  min_10 Float
+  min_11 Float
+  min_12 Float
+  min_13 Float
+  min_14 Float
+  min_15 Float
+  min_16 Float
+  min_17 Float
+  min_18 Float
+  min_19 Float
+  min_20 Float
+  min_21 Float
+  min_22 Float
+  min_23 Float
+  min_24 Float
+  min_25 Float
+  min_26 Float
+  min_27 Float
+  min_28 Float
+  min_29 Float
+  min_30 Float
+  min_31 Float
+  min_32 Float
+  min_33 Float
+  min_34 Float
+  min_35 Float
+  min_36 Float
+  min_37 Float
+  min_38 Float
+  min_39 Float
+  min_40 Float
+  min_41 Float
+  min_42 Float
+  min_43 Float
+  min_44 Float
+  min_45 Float
+  min_46 Float
+  min_47 Float
+  min_48 Float
+  min_49 Float
+  min_50 Float
+  min_51 Float
+  min_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model TimeCandelDataDay {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  time_1  Float
+  time_2  Float
+  time_3  Float
+  time_4  Float
+  time_5  Float
+  time_6  Float
+  time_7  Float
+  time_8  Float
+  time_9  Float
+  time_10 Float
+  time_11 Float
+  time_12 Float
+  time_13 Float
+  time_14 Float
+  time_15 Float
+  time_16 Float
+  time_17 Float
+  time_18 Float
+  time_19 Float
+  time_20 Float
+  time_21 Float
+  time_22 Float
+  time_23 Float
+  time_24 Float
+  time_25 Float
+  time_26 Float
+  time_27 Float
+  time_28 Float
+  time_29 Float
+  time_30 Float
+  time_31 Float
+  time_32 Float
+  time_33 Float
+  time_34 Float
+  time_35 Float
+  time_36 Float
+  time_37 Float
+  time_38 Float
+  time_39 Float
+  time_40 Float
+  time_41 Float
+  time_42 Float
+  time_43 Float
+  time_44 Float
+  time_45 Float
+  time_46 Float
+  time_47 Float
+  time_48 Float
+  time_49 Float
+  time_50 Float
+  time_51 Float
+  time_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model sergeyApi_1_1 {
+  id              Int          @id @default(autoincrement())
+  bot             String
+  code            String
+  tf              ETFCRYPTO1Tf @default(h)
+  days            Float
+  totalProfit     Float
+  priceOpenPos_1  Float
+  priceOpenPos_2  Float
+  priceOpenPos_3  Float
+  priceOpenPos_4  Float
+  priceOpenPos_5  Float
+  priceOpenPos_6  Float
+  priceOpenPos_7  Float
+  priceOpenPos_8  Float
+  priceOpenPos_9  Float
+  priceOpenPos_10 Float
+  profitLop_1     Float
+  profitLop_2     Float
+  profitLop_3     Float
+  profitLop_4     Float
+  profitLop_5     Float
+  profitLop_6     Float
+  profitLop_7     Float
+  profitLop_8     Float
+  profitLop_9     Float
+  profitLop_10    Float
+  Fchange_1       Float
+  Fchange_2       Float
+  Fchange_3       Float
+  Fchange_4       Float
+  Fchange_5       Float
+  Fchange_6       Float
+  Fchange_7       Float
+  Fchange_8       Float
+  Fchange_9       Float
+  Fchange_10      Float
+  FW_change_1     Float
+  FW_change_2     Float
+  FW_change_3     Float
+  FW_change_4     Float
+  FW_change_5     Float
+  FW_change_6     Float
+  FW_change_7     Float
+  FW_change_8     Float
+  FW_change_9     Float
+  FW_change_10    Float
+  FM_change_1     Float
+  FM_change_2     Float
+  FM_change_3     Float
+  FM_change_4     Float
+  FM_change_5     Float
+  FM_change_6     Float
+  FM_change_7     Float
+  FM_change_8     Float
+  FM_change_9     Float
+  FM_change_10    Float
+
+  @@unique([bot, code, tf])
+}
+
+model sergeyApi_2 {
+  id                 Int          @id @default(autoincrement())
+  bot                String
+  code               String
+  tf                 ETFCRYPTO1Tf @default(h)
+  portfolioLoad      Float
+  ReviewNumber       Float
+  positionPrecent_1  Float
+  positionPrecent_2  Float
+  positionPrecent_3  Float
+  positionPrecent_4  Float
+  positionPrecent_5  Float
+  positionPrecent_6  Float
+  positionPrecent_7  Float
+  positionPrecent_8  Float
+  positionPrecent_9  Float
+  positionPrecent_10 Float
+  profitSize_1       Float
+  profitSize_2       Float
+  profitSize_3       Float
+  profitSize_4       Float
+  profitSize_5       Float
+  profitSize_6       Float
+  profitSize_7       Float
+  profitSize_8       Float
+  profitSize_9       Float
+  profitSize_10      Float
+  profitSizeD_1      Float
+  profitSizeD_2      Float
+  profitSizeD_3      Float
+  profitSizeD_4      Float
+  profitSizeD_5      Float
+  profitSizeD_6      Float
+  profitSizeD_7      Float
+  profitSizeD_8      Float
+  profitSizeD_9      Float
+  profitSizeD_10     Float
+  profitSizeW_1      Float
+  profitSizeW_2      Float
+  profitSizeW_3      Float
+  profitSizeW_4      Float
+  profitSizeW_5      Float
+  profitSizeW_6      Float
+  profitSizeW_7      Float
+  profitSizeW_8      Float
+  profitSizeW_9      Float
+  profitSizeW_10     Float
+  profitSizeM_1      Float
+  profitSizeM_2      Float
+  profitSizeM_3      Float
+  profitSizeM_4      Float
+  profitSizeM_5      Float
+  profitSizeM_6      Float
+  profitSizeM_7      Float
+  profitSizeM_8      Float
+  profitSizeM_9      Float
+  profitSizeM_10     Float
+
+  @@unique([bot, code, tf])
+}
+
+model sergeyApi_3 {
+  id                  Int          @id @default(autoincrement())
+  bot                 String
+  code                String
+  tf                  ETFCRYPTO1Tf @default(h)
+  maxProfit           Float
+  DrawDown            Float
+  precentBH_1         Float
+  precentBH_2         Float
+  precentBH_3         Float
+  precentBH_4         Float
+  precentBH_5         Float
+  precentBH_6         Float
+  precentBH_7         Float
+  precentBH_8         Float
+  precentBH_9         Float
+  precentBH_10        Float
+  profitBH            Float
+  MaxProfitBH         Float
+  DrawDownBH          Float
+  MaxStDev            Float
+  MaxStDevBH          Float
+  annualProfit        Float
+  annualProfitBH      Float
+  recoveryFactor      Float
+  recoveryFactorBH    Float
+  MaxExpectedProfit   Float
+  MinExpectedProfit   Float
+  MaxExpectedProfitBH Float
+  MinExpectedProfitBH Float
+  Efficiency          Float
+  changeSize_1        Float
+  changeSize_2        Float
+  changeSize_3        Float
+  changeSize_4        Float
+  changeSize_5        Float
+  changeSize_6        Float
+  changeSize_7        Float
+  changeSize_8        Float
+  changeSize_9        Float
+  changeSize_10       Float
+  sharp               Float
+  overflowControl     Float
+  k                   Float
+  MaxSpread           Float
+  MinSpread           Float
+  gridReset           Float
+  kWeght              Float
+  n                   Float
+  n1                  Float
+  KW_Profit           Float
+  KW_StDev            Float
+  KW_DrowDown         Float
+  KW_RecoveryFactor   Float
+  KW_CalmarRatio      Float
+  CalmarRatio         Float
+  CalmarRatioBH       Float
+
+  @@unique([bot, code, tf])
+}
+
+model sergeyApi_4 {
+  id         Int          @id @default(autoincrement())
+  bot        String
+  code       String
+  tf         ETFCRYPTO1Tf @default(h)
+  bh_week_1  Float
+  bh_week_2  Float
+  bh_week_3  Float
+  bh_week_4  Float
+  bh_week_5  Float
+  bh_week_6  Float
+  bh_week_7  Float
+  bh_week_8  Float
+  bh_week_9  Float
+  bh_week_10 Float
+  bh_week_11 Float
+  bh_week_12 Float
+  bh_week_13 Float
+  bh_week_14 Float
+  bh_week_15 Float
+  bh_week_16 Float
+  bh_week_17 Float
+  bh_week_18 Float
+  bh_week_19 Float
+  bh_week_20 Float
+  bh_week_21 Float
+  bh_week_22 Float
+  bh_week_23 Float
+  bh_week_24 Float
+  bh_week_25 Float
+  bh_week_26 Float
+  bh_week_27 Float
+  bh_week_28 Float
+  bh_week_29 Float
+  bh_week_30 Float
+  bh_week_31 Float
+  bh_week_32 Float
+  bh_week_33 Float
+  bh_week_34 Float
+  bh_week_35 Float
+  bh_week_36 Float
+  bh_week_37 Float
+  bh_week_38 Float
+  bh_week_39 Float
+  bh_week_40 Float
+  bh_week_41 Float
+  bh_week_42 Float
+  bh_week_43 Float
+  bh_week_44 Float
+  bh_week_45 Float
+  bh_week_46 Float
+  bh_week_47 Float
+  bh_week_48 Float
+  bh_week_49 Float
+  bh_week_50 Float
+  bh_week_51 Float
+  bh_week_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model StatusAndTokens {
+  id                Int          @id @default(autoincrement())
+  bot               String
+  code              String
+  tf                ETFCRYPTO1Tf @default(h)
+  email             Float
+  statusTransacrion Float        @default(1)
+  lotsReward        Float        @default(0.001)
+  etfReward         Float        @default(0.001)
+  discount          Float        @default(1)
+  buy               Float        @default(1)
+  date              Float
+
+  @@unique([bot, code, tf])
+}
+
+model InvestorTransactions {
+  id                Int      @id @default(autoincrement())
+  email             String   @default("test@gmail.com")
+  orderId           Float
+  address           String   @default("")
+  totalBuy          String   @default("")
+  amountOfETF       String   @default("")
+  recievedAmount    String   @default("")
+  investDate        DateTime @default(now())
+  initialPrice      Float    @default(0)
+  CurrencyFromChain String   @default("")
+  CurrencyFromCode  String   @default("")
+  CurrencyToChain   String   @default("")
+  CurrencyToCode    String   @default("")
+  status            Int      @default(1)
+  PaymentMethod     Int      @default(1)
+  totalFunded       Float    @default(0)
+  amountTokens      Float    @default(0)
+  isTokens          Float    @default(0)
+  isAddToTotal      Float    @default(0)
+}
+
+model VirtualWallet {
+  id                 Int    @id @default(autoincrement())
+  email              String @default("test@test.com")
+  address            String @default("0x0")
+  statusTransacrion  Float  @default(1)
+  lotsReward         Float  @default(0.001)
+  etfReward          Float  @default(0.001)
+  discount           Float  @default(1)
+  buy                Float  @default(1)
+  FTMCrate           Float  @default(1)
+  checkDate          Float  @default(0)
+  missedTokens       Float  @default(0)
+  date               String @default("1")
+  checkDatePie       Float  @default(0)
+  missedTokensPie    Float  @default(0)
+  datePie            String @default("1")
+  dateDividents      String @default("1")
+  finalValue         Float  @default(0)
+  withdrawlRevards   Float  @default(0)
+  withdrawlDividents Float  @default(0)
+
+  @@index([email], name: "email_index")
+}
+
+model StatsFTM {
+  id             Int          @id @default(autoincrement())
+  bot            String
+  code           String
+  tf             ETFCRYPTO1Tf @default(h)
+  msgNmb         Float
+  msgNmb1        Float
+  LastEntrePrice Float
+  Power          Float
+  Tend           Float
+  UpWave         Float
+
+  DownWave            Float
+  DaysCount           Float
+  ProfitPct           Float
+  MaxProfit           Float
+  AnnualProfit        Float
+  DropDown            Float
+  MaxStDev            Float
+  ProfitPctBH         Float
+  MaxProfitBH         Float
+  AnnualProfitBH      Float
+  DropDownBH          Float
+  MaxStDevBH          Float
+  TradesCount         Float
+  ProfitTradesPct     Float
+  ExpectedProfitMax   Float
+  ExpectedProfitMin   Float
+  ExpectedProfitBHmax Float
+  ExpectedProfitBHmix Float
+  WeeklyProfit        Float
+  LastWeeklyProfit    Float
+  LastPrice           Float
+  TradesCountWeek     Float
+  LastWeekTradesCount Float
+  tmLn                Float
+  tmSh                Float
+  DtLn                Float
+  Dtsh                Float
+  PosSize             Float
+  Type                Float
+  Enter               Float
+  StopPrice           Float
+  PnLPos              Float
+  RiskPos             Float
+  RecoveryFactor      Float
+  RecoveryFactorBH    Float
+  CalmarRatio         Float
+  CalmarRatioBH       Float
+  Sharp               Float
+  SharpBH             Float
+  ProfitKW            Float
+  StDevKW             Float
+  DrowDownKW          Float
+  RecoveryFactorKW    Float
+  CalmarRatioKW       Float
+  KW_Sharp            Float
+  EfficiencyKW        Float
+
+  @@unique([bot, code, tf])
+}
+
+model OpenCandelDataMonth {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  open_1  Float
+  open_2  Float
+  open_3  Float
+  open_4  Float
+  open_5  Float
+  open_6  Float
+  open_7  Float
+  open_8  Float
+  open_9  Float
+  open_10 Float
+  open_11 Float
+  open_12 Float
+  open_13 Float
+  open_14 Float
+  open_15 Float
+  open_16 Float
+  open_17 Float
+  open_18 Float
+  open_19 Float
+  open_20 Float
+  open_21 Float
+  open_22 Float
+  open_23 Float
+  open_24 Float //here
+  open_25 Float
+  open_26 Float
+  open_27 Float
+  open_28 Float
+  open_29 Float
+  open_30 Float
+  open_31 Float
+  open_32 Float
+  open_33 Float
+  open_34 Float
+  open_35 Float
+  open_36 Float
+  open_37 Float
+  open_38 Float
+  open_39 Float
+  open_40 Float
+  open_41 Float
+  open_42 Float
+  open_43 Float
+  open_44 Float
+  open_45 Float
+  open_46 Float
+  open_47 Float
+  open_48 Float
+  open_49 Float
+  open_50 Float
+  open_51 Float
+  open_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model CloseCandelDataMonth {
+  id       Int          @id @default(autoincrement())
+  bot      String
+  code     String
+  tf       ETFCRYPTO1Tf @default(h)
+  close_1  Float
+  close_2  Float
+  close_3  Float
+  close_4  Float
+  close_5  Float
+  close_6  Float
+  close_7  Float
+  close_8  Float
+  close_9  Float
+  close_10 Float
+  close_11 Float
+  close_12 Float
+  close_13 Float
+  close_14 Float
+  close_15 Float
+  close_16 Float
+  close_17 Float
+  close_18 Float
+  close_19 Float
+  close_20 Float
+  close_21 Float
+  close_22 Float
+  close_23 Float
+  close_24 Float //here
+  close_25 Float
+  close_26 Float
+  close_27 Float
+  close_28 Float
+  close_29 Float
+  close_30 Float
+  close_31 Float
+  close_32 Float
+  close_33 Float
+  close_34 Float
+  close_35 Float
+  close_36 Float
+  close_37 Float
+  close_38 Float
+  close_39 Float
+  close_40 Float
+  close_41 Float
+  close_42 Float
+  close_43 Float
+  close_44 Float
+  close_45 Float
+  close_46 Float
+  close_47 Float
+  close_48 Float
+  close_49 Float
+  close_50 Float
+  close_51 Float
+  close_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MaxCandelDataMonth {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  max_1  Float
+  max_2  Float
+  max_3  Float
+  max_4  Float
+  max_5  Float
+  max_6  Float
+  max_7  Float
+  max_8  Float
+  max_9  Float
+  max_10 Float
+  max_11 Float
+  max_12 Float
+  max_13 Float
+  max_14 Float
+  max_15 Float
+  max_16 Float
+  max_17 Float
+  max_18 Float
+  max_19 Float
+  max_20 Float
+  max_21 Float
+  max_22 Float
+  max_23 Float
+  max_24 Float //here
+  max_25 Float
+  max_26 Float
+  max_27 Float
+  max_28 Float
+  max_29 Float
+  max_30 Float
+  max_31 Float
+  max_32 Float
+  max_33 Float
+  max_34 Float
+  max_35 Float
+  max_36 Float
+  max_37 Float
+  max_38 Float
+  max_39 Float
+  max_40 Float
+  max_41 Float
+  max_42 Float
+  max_43 Float
+  max_44 Float
+  max_45 Float
+  max_46 Float
+  max_47 Float
+  max_48 Float
+  max_49 Float
+  max_50 Float
+  max_51 Float
+  max_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model MinCandelDataMonth {
+  id     Int          @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     ETFCRYPTO1Tf @default(h)
+  min_1  Float
+  min_2  Float
+  min_3  Float
+  min_4  Float
+  min_5  Float
+  min_6  Float
+  min_7  Float
+  min_8  Float
+  min_9  Float
+  min_10 Float
+  min_11 Float
+  min_12 Float
+  min_13 Float
+  min_14 Float
+  min_15 Float
+  min_16 Float
+  min_17 Float
+  min_18 Float
+  min_19 Float
+  min_20 Float
+  min_21 Float
+  min_22 Float
+  min_23 Float
+  min_24 Float
+  min_25 Float
+  min_26 Float
+  min_27 Float
+  min_28 Float
+  min_29 Float
+  min_30 Float
+  min_31 Float
+  min_32 Float
+  min_33 Float
+  min_34 Float
+  min_35 Float
+  min_36 Float
+  min_37 Float
+  min_38 Float
+  min_39 Float
+  min_40 Float
+  min_41 Float
+  min_42 Float
+  min_43 Float
+  min_44 Float
+  min_45 Float
+  min_46 Float
+  min_47 Float
+  min_48 Float
+  min_49 Float
+  min_50 Float
+  min_51 Float
+  min_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model TimeCandelDataMonth {
+  id      Int          @id @default(autoincrement())
+  bot     String
+  code    String
+  tf      ETFCRYPTO1Tf @default(h)
+  time_1  Float
+  time_2  Float
+  time_3  Float
+  time_4  Float
+  time_5  Float
+  time_6  Float
+  time_7  Float
+  time_8  Float
+  time_9  Float
+  time_10 Float
+  time_11 Float
+  time_12 Float
+  time_13 Float
+  time_14 Float
+  time_15 Float
+  time_16 Float
+  time_17 Float
+  time_18 Float
+  time_19 Float
+  time_20 Float
+  time_21 Float
+  time_22 Float
+  time_23 Float
+  time_24 Float
+  time_25 Float
+  time_26 Float
+  time_27 Float
+  time_28 Float
+  time_29 Float
+  time_30 Float
+  time_31 Float
+  time_32 Float
+  time_33 Float
+  time_34 Float
+  time_35 Float
+  time_36 Float
+  time_37 Float
+  time_38 Float
+  time_39 Float
+  time_40 Float
+  time_41 Float
+  time_42 Float
+  time_43 Float
+  time_44 Float
+  time_45 Float
+  time_46 Float
+  time_47 Float
+  time_48 Float
+  time_49 Float
+  time_50 Float
+  time_51 Float
+  time_52 Float
+
+  @@unique([bot, code, tf])
+}
+
+model FtmTerminalApiv1 {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  timeLong     Float
+  timeShort    Float
+  dateLong     Float
+  dateShort    Float
+  sizePosition Float
+  direction    Float
+  enterPrice   Float
+  stopPrice    Float
+  pnlPosition  Float
+  riskPosition Float
+
+  @@unique([bot, code, tf])
+}
+
+model UserWallets {
+  id         Int    @id @default(autoincrement())
+  email      String @default("test@gmail.com")
+  address    String @unique
+  chain      String @default("")
+  userStatus String @default("")
+}
+
+model PoolFormattedTransactions10 {
+  id           Int    @id @default(autoincrement())
+  email        String @default("test@test.com")
+  totalBuyUsdt Float  @default(0)
+  amountOfETF  Float  @default(0)
+  initialPrice Float  @default(0)
+  date         String @default("2024-01-01")
+  type         String @default("None")
+  isSaled      Float  @default(0)
+  typeOfETF    Float  @default(0)
+}
+
+model Candels {
+  id           Int          @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           ETFCRYPTO1Tf @default(h)
+  Date         Float
+  currentTime  Float
+  currentClose Float
+  Time         Float
+  Open         Float
+  Close        Float
+  Max          Float
+  Min          Float
+  Volume       Float
+
+  @@unique([bot, code, tf])
+}
+
+model WithdrawalTransactionsVW {
+  id                 Int      @id @default(autoincrement())
+  email              String   @default("test@gmail.com")
+  orderId            Float    @default(0)
+  status             Float    @default(0)
+  tokenAmount        Float    @default(0)
+  CurrencyRecieved   Float    @default(0)
+  WithdrawalCurrency String   @default("")
+  investDate         DateTime @default(now())
+  transactionType    Float    @default(0)
+}
+
+model CandelsHistory {
+  id     Int    @id @default(autoincrement())
+  bot    String
+  code   String
+  tf     String @default("h")
+  Time   Float
+  Open   Float
+  Close  Float
+  Max    Float
+  Min    Float
+  Volume Float
+  Date   String
+}
+
+model ExchangeOrders {
+  id           Int      @id @default(autoincrement())
+  email        String   @default("test@gmail.com")
+  firstUser    String   @default("test@gmail.com")
+  direction    Float    @default(0)
+  status       Float    @default(0)
+  price        Float    @default(0)
+  goalPrice    Float    @default(0)
+  initialPrice String   @default("")
+  quantity     Float    @default(0)
+  date         DateTime @default(now())
+  typeOfETF    Float    @default(0)
+  typeOfDeal   String   @default("")
+}
+
+model VirtualWalletDeposit {
+  id         Int    @id @default(autoincrement())
+  email      String @default("test@gmail.com")
+  amount     Float  @default(0)
+  amountUSDF Float  @default(0)
+}
+
+model VirtualWalletTransaction {
+  id                Int      @id @default(autoincrement())
+  email             String   @default("test@gmail.com")
+  orderId           Float    @unique
+  address           String   @default("")
+  totalBuy          String   @default("")
+  amountOfETF       String   @default("")
+  recievedAmount    String   @default("")
+  investDate        DateTime @default(now())
+  initialPrice      Float    @default(0)
+  CurrencyFromChain String   @default("")
+  CurrencyFromCode  String   @default("")
+  CurrencyToChain   String   @default("")
+  CurrencyToCode    String   @default("")
+  status            Int      @default(1)
+  PaymentMethod     Int      @default(1)
+  totalFunded       Float    @default(0)
+  amountTokens      Float    @default(0)
+  isTokens          Float    @default(0)
+  isAddToTotal      Float    @default(0)
+}
+
+model UserProfit {
+  id    Int      @id @default(autoincrement())
+  email String   @default("test@gmail.com")
+  etf_1 Float    @default(0)
+  etf_2 Float    @default(0)
+  etf_3 Float    @default(0)
+  lots  Float    @default(0)
+  date  DateTime @default(now())
+}
+
+model PoolTransactionsStart {
+  id              Int        @id @default(autoincrement())
+  bot             String
+  code            String
+  tf              StatSetfTf @default(h)
+  email           String
+  etfType         Float
+  maticRate       Float
+  usdtRateToMatic Float
+  priceFtmc       Float
+  date            String
+  time            Float
+  userStatus      Float
+  priceUsdt       Float
+
+  @@unique([bot, code, tf])
+}
+
+model CurrencyCandelsHistory {
+  id           Int    @id @default(autoincrement())
+  bot          String
+  code         String
+  tf           String @default("h")
+  Time         Float
+  Open         Float
+  Close        Float
+  Max          Float
+  Min          Float
+  Volume       Float
+  Date         String
+  Attention    Float
+  Veryfication Float
+  L11          Float  @default(0)
+  L21          Float  @default(0)
+  delta1       Float  @default(0)
+  date1        Float  @default(0)
+  L12          Float  @default(0)
+  L22          Float  @default(0)
+  delta2       Float  @default(0)
+  date2        Float  @default(0)
+  L3           Float  @default(0)
+  L4           Float  @default(0)
+  ATR          Float  @default(0)
+  EMA          Float  @default(0)
+}
+
+model TransactionsForSale {
+  id                     Int    @id @default(autoincrement())
+  email                  String @default("test@gmail.com")
+  averageValue           Float  @default(0)
+  ClaimedPublicRate      Float  @default(0)
+  days                   Float  @default(0)
+  typeOfETF              Float  @default(0)
+  totalAmount            Float  @default(0)
+  currentValue           Float  @default(0)
+  totalProfit            Float  @default(0)
+  pieAmountIncludeAmount Float  @default(0)
+  commission             Float  @default(0)
+  commissionValue        Float  @default(0)
+  amountTokens           Float  @default(0)
+  saleTimes              Float  @default(0)
+  address                String @default("")
+}
+
+model News {
+  id    Int      @id @default(autoincrement())
+  text  String
+  photo String?
+  date  DateTime @default(now())
+}
+
+model ActiveOrders {
+  id            Int      @id @default(autoincrement())
+  email         String   @default("test@gmail.com")
+  typeOfETF     Float    @default(0)
+  bidPrice      Float    @default(0)
+  askPrice      Float    @default(0)
+  bidAmount     Float    @default(0)
+  askAmount     Float    @default(0)
+  averageValue  Float    @default(0)
+  status        String   @default("")
+  date          DateTime @default(now())
+  type          String   @default("")
+  executPrecent Float    @default(0)
+  initialAmount Float    @default(0)
+}
+
+model OrdersHistory {
+  id            Int      @id @default(autoincrement())
+  email         String   @default("test@gmail.com")
+  typeOfETF     Float    @default(0)
+  bidPrice      Float    @default(0)
+  askPrice      Float    @default(0)
+  bidAmount     Float    @default(0)
+  askAmount     Float    @default(0)
+  averageValue  Float    @default(0)
+  status        String   @default("")
+  date          DateTime @default(now())
+  type          String   @default("")
+  executPrecent Float    @default(0)
+  initialAmount Float    @default(0)
+}
+
+model TransactionsTransferToWallet {
+  id           Int      @id @default(autoincrement())
+  email        String   @default("test@gmail.com")
+  USDF         Float    @default(0)
+  tokens       Float    @default(0)
+  isSended     Float    @default(0)
+  isAddToTotal Float    @default(0)
+  address      String   @default("")
+  date         DateTime @default(now())
+}
+
+model UsersTokens {
+  id     Int    @id @default(autoincrement())
+  email  String @default("test@gmail.com")
+  tokens Float  @default(0)
+}
+
+model Subscription {
+  user_id   Int    @id
+  username  String
+  end_date  DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Payment {
+  id        Int      @id @default(autoincrement())
+  user_id   Int
+  username  String
+  paid_at   DateTime @default(now())
+  source    String
+  session_id String?
+  amount    Int?    
+}
+
+model AccessKey {
+  id         Int      @id @default(autoincrement())
+  code       String   @unique
+  created_at DateTime @default(now())
+  used_by    Int?
+  used_at    DateTime?
+  note       String? 
+}

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "StatusAndTokens" ALTER COLUMN "status" SET DEFAULT 1,
+ALTER COLUMN "rateFTMC" SET DEFAULT 0.001;

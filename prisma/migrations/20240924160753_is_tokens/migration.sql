@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "InvestorTransactions" ADD COLUMN     "amountTokens" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ADD COLUMN     "isTokens" DOUBLE PRECISION NOT NULL DEFAULT 0;

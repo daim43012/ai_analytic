@@ -1,0 +1,36 @@
+-- CreateTable
+CREATE TABLE "InstrumentChartsData" (
+    "id" SERIAL NOT NULL,
+    "bot" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
+    "tf" "ETFCRYPTO1Tf" NOT NULL DEFAULT 'h',
+    "bid" DOUBLE PRECISION NOT NULL,
+    "ask" DOUBLE PRECISION NOT NULL,
+    "date" DOUBLE PRECISION NOT NULL,
+    "time" DOUBLE PRECISION NOT NULL,
+    "open" DOUBLE PRECISION NOT NULL,
+    "close" DOUBLE PRECISION NOT NULL,
+    "max" DOUBLE PRECISION NOT NULL,
+    "min" DOUBLE PRECISION NOT NULL,
+    "time_h" DOUBLE PRECISION NOT NULL,
+    "open_h" DOUBLE PRECISION NOT NULL,
+    "close_h" DOUBLE PRECISION NOT NULL,
+    "max_h" DOUBLE PRECISION NOT NULL,
+    "min_h" DOUBLE PRECISION NOT NULL,
+    "time_d" DOUBLE PRECISION NOT NULL,
+    "open_d" DOUBLE PRECISION NOT NULL,
+    "close_d" DOUBLE PRECISION NOT NULL,
+    "max_d" DOUBLE PRECISION NOT NULL,
+    "min_d" DOUBLE PRECISION NOT NULL,
+    "time_w" DOUBLE PRECISION NOT NULL,
+    "open_w" DOUBLE PRECISION NOT NULL,
+    "close_w" DOUBLE PRECISION NOT NULL,
+    "mmax_w" DOUBLE PRECISION NOT NULL,
+    "min_w" DOUBLE PRECISION NOT NULL,
+    "date_w" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "InstrumentChartsData_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "InstrumentChartsData_bot_code_tf_key" ON "InstrumentChartsData"("bot", "code", "tf");
