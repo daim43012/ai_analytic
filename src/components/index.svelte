@@ -49,7 +49,6 @@
 	}
 
 	async function fetchCandles(): Promise<void> {
-		console.log(`📥 Fetching 4 months of candles from Binance for ${symbol}`);
 
 		const interval = '1h';
 		const limit = 1000;
@@ -60,7 +59,6 @@
 
 		while (true) {
 			const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&startTime=${startTime}&limit=${limit}`;
-			console.log(`⏳ Requesting candles from ${new Date(startTime).toISOString()}`);
 			const res = await fetch(url);
 			const data = await res.json();
 
@@ -86,25 +84,94 @@
 		candleSeries.setData(candlesData);
 
 		if (lv) {
-			console.log('📡 Вызов drawLevels() после загрузки Alor-свечей');
 			await drawLevels();
 		}
 	}
+	function setupAlorWebSocket(accessToken: string): void {
+		const guid = crypto.randomUUID();
+		const symbolClean = symbol.replace(/USDT|USD|USDC|BUSD|DAI$/, '');
+		const ws = new WebSocket(`wss://api.alor.ru/ws`);
+
+		let currentCandle: Candle | null = null;
+
+		ws.onopen = () => {
+
+			const msg = {
+				opcode: 'QuotesSubscribe',
+				code: symbolClean,
+				exchange: 'MOEX',
+				instrumentGroup: 'TQBR',
+				format: 'Simple',
+				frequency: 100,
+				guid,
+				token: accessToken
+			};
+
+			setTimeout(() => {
+				ws.send(JSON.stringify(msg));
+			}, 300);
+		};
+
+		ws.onmessage = (event) => {
+			try {
+				const parsed = JSON.parse(event.data);
+				const price = parsed?.data?.last_price;
+
+				if (!price) return;
+
+				const timestamp = Math.floor(Date.now() / 1000);
+				const startOfHour = Math.floor(timestamp / 3600) * 3600;
+
+				if (!currentCandle || currentCandle.time !== startOfHour) {
+					// новая свеча
+					currentCandle = {
+						time: startOfHour,
+						open: price,
+						high: price,
+						low: price,
+						close: price
+					};
+				} else {
+					// обновляем текущую
+					currentCandle.high = Math.max(currentCandle.high, price);
+					currentCandle.low = Math.min(currentCandle.low, price);
+					currentCandle.close = price;
+				}
+
+				candleSeries.update(currentCandle);
+			} catch (err) {
+				console.error('❌ Ошибка парсинга сообщения Alor WS:', err);
+			}
+		};
+
+		ws.onclose = (event) => {
+			console.warn('❌ Alor WebSocket Closed', {
+				code: event.code,
+				reason: event.reason,
+				wasClean: event.wasClean
+			});
+			setTimeout(() => setupAlorWebSocket(accessToken), 3000);
+		};
+
+		ws.onerror = (err) => {
+			console.error('❌ Alor WebSocket Error:', err);
+			ws.close();
+		};
+	}
+
 	async function fetchAlorCandles(): Promise<void> {
 		const refreshToken = '96702dfa-25bf-4c79-8a5d-709cfa30c5a6';
 		const exchange = 'MOEX';
 		const tf = 3600;
 
-		// Получаем access_token
-		console.log('🔐 Получаем access_token...');
 		const tokenRes = await fetch('https://oauth.alor.ru/refresh', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ token: refreshToken })
 		});
 		const tokenData = await tokenRes.json();
+
 		const accessToken = tokenData.AccessToken;
-		console.log('🔑 accessToken получен:', accessToken?.slice(0, 20) + '...');
 
 		if (!accessToken) {
 			console.error('❌ Не удалось получить токен Alor');
@@ -112,19 +179,11 @@
 		}
 
 		// Считаем дни строго по 00:00:00 UTC
-		const now = Math.floor(new Date().setUTCHours(0, 0, 0, 0) / 1000); // сегодня 00:00 UTC
+		const now = Math.floor(Date.now() / 1000); // ✅ текущее время в секундах
 		const threeMonthsAgo = now - 60 * 60 * 24 * 90;
 
 		// Запрос свечей
 		const url = `https://api.alor.ru/md/v2/history?symbol=${symbol}&exchange=${exchange}&tf=${tf}&from=${threeMonthsAgo}&to=${now}`;
-		console.log(`📥 Запрос свечей Alor:
-  symbol: ${symbol}
-  exchange: ${exchange}
-  from: ${threeMonthsAgo} (${new Date(threeMonthsAgo * 1000).toISOString()})
-  to: ${now} (${new Date(now * 1000).toISOString()})
-  url: ${url}
-  `);
-
 		const res = await fetch(url, {
 			headers: {
 				Accept: 'application/json',
@@ -132,9 +191,7 @@
 			}
 		});
 
-		console.log('📦 Response status:', res.status);
 		const data = await res.json();
-		console.log('📄 Response JSON:', data);
 
 		if (!data?.history || !Array.isArray(data.history) || data.history.length === 0) {
 			console.warn('⚠️ Свечи не найдены или пустой ответ');
@@ -151,29 +208,24 @@
 
 		candlesData = candles;
 		candleSeries.setData(candles);
-		console.log(`✅ Загружено свечей: ${candles.length}`);
 
 		if (lv) {
-			console.log('📡 Вызов drawLevels() после загрузки Alor-свечей');
 			await drawLevels();
 		}
+		setupAlorWebSocket(accessToken);
 	}
 
 	async function drawLevels(): Promise<void> {
-		console.log('📊 Drawing AI levels for', symbol);
 
 		const assetCode = symbol.replace(/USDT|USD|USDC|BUSD|DAI$/, '');
 		const botType = symbol.includes('USDT') ? 'AI_Analytic' : 'AI_Moex';
 
-		console.log(`🔎 Ищем уровни для code=${assetCode}, bot=${botType}`);
 
 		const response = await fetch(`https://bot-advisor.com/api/robo-advisor/analytics`);
 		const data: LevelData[] = await response.json();
 
-		console.log('📦 Ответ API:', data);
 
 		const levels = data.find((item) => item.bot === botType && item.code === assetCode);
-		console.log('🎯 Найденные уровни:', levels);
 
 		if (!levels) {
 			console.warn('⚠️ Уровни не найдены для выбранного инструмента.');
@@ -194,7 +246,6 @@
 
 		levelLines.forEach(({ price, color, label }) => {
 			if (price !== undefined) {
-				console.log(`🧩 Рисуем уровень "${label}" на цене ${price}`);
 				const lineSeries = chart.addLineSeries({ color, lineWidth: 1 });
 				lineSeries.setData([
 					{ time: firstTime, value: price },
@@ -209,7 +260,6 @@
 		socket = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@kline_1h`);
 
 		socket.onopen = () => {
-			console.log('✅ WebSocket Connected');
 			isConnectedToWS = true;
 			loading = false;
 			applyChartSize();
@@ -229,7 +279,6 @@
 		};
 
 		socket.onclose = () => {
-			console.log('❌ WebSocket Disconnected, retrying...');
 			isConnectedToWS = false;
 			loading = true;
 			setTimeout(setupWebSocket, 2000);
